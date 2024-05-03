@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+        
+        //Keep track of wins and losses
+        let win = 0
+        let loss = 0
+        //help the computer make its choice
+        let computerturn = Math.floor(Math.random() * 3)  + 1; 
+        let playerScore = 0;
+        let computerScore = 0;
+
+        //determine the computers choice
+        function getcomputerchoice()
+        {
+            if (computerturn === 1){
+                computerturn = "paper";
+            }
+            if (computerturn === 2){
+                computerturn = "rock";
+            }
+            if (computerturn === 3){
+                computerturn = "scissors";
+            }
+            return computerturn;document.write (win)
+        }
+        
+        let playerSelection = window.prompt().toLowerCase
+        
+        //play one round of the game
+        function playround(playerSelection, computerSelection)
+        {   
+            //determine the winner
+            if(playerSelection === "rock" && computerturn === "paper"
+                || playerSelection === "paper" && computerturn === "scissors"
+                || playerSelection === "scissors" && computerturn === "rock"){
+                document.write("You lost")
+                return 
+                win++
+            }
+            else if (computerturn === "scissors" && playerSelection === "rock"
+                || computerturn === "rock" && playerSelection === "paper"  
+                || computerturn === "paper" && playerSelection === "scissors") {
+                document.write("You Win")
+                return loss++
+            }
+            else document.write("Its a Tie")
+
+            
+            
+
+        }
+        document.write (win)
+        
+        const computerSelection = getcomputerchoice();
+       
+        console.log(playround (playerSelection, computerSelection));
+    </script>
+    
+</body>
+</html>
