@@ -12,55 +12,60 @@
         let win = 0
         let loss = 0
         //help the computer make its choice
-        let computerturn = Math.floor(Math.random() * 3)  + 1; 
+         
+        
         let playerScore = 0;
         let computerScore = 0;
 
         //determine the computers choice
-        function getcomputerchoice()
+        function getComputerChoice()
         {
-            if (computerturn === 1){
-                computerturn = "paper";
+            let computerTurn = Math.floor(Math.random() * 3)  + 1;
+            if (computerTurn === 1){
+                return "paper";
             }
-            if (computerturn === 2){
-                computerturn = "rock";
+            else if (computerTurn === 2){
+                return "rock";
             }
-            if (computerturn === 3){
-                computerturn = "scissors";
+            else if (computerTurn === 3){
+                return "scissors";
             }
-            return computerturn;document.write (win)
         }
         
-        let playerSelection = window.prompt().toLowerCase
+        
         
         //play one round of the game
-        function playround(playerSelection, computerSelection)
+        function playRound(playerChoice, computerTurn)
         {   
             //determine the winner
-            if(playerSelection === "rock" && computerturn === "paper"
-                || playerSelection === "paper" && computerturn === "scissors"
-                || playerSelection === "scissors" && computerturn === "rock"){
-                document.write("You lost")
-                return 
+            if(playerChoice === "rock" && computerTurn === "paper"
+                || playerChoice === "paper" && computerTurn === "scissors"
+                || playerChoice === "scissors" && computerTurn === "rock"){
+                    loss++
+                return  "You lost"; 
+            }
+            //let the loser know
+            else if (computerTurn === "scissors" && playerChoice === "rock"
+                || computerTurn === "rock" && playerChoice === "paper"  
+                || computerTurn === "paper" && playerChoice === "scissors") {
                 win++
+                return "You Win";
+                
             }
-            else if (computerturn === "scissors" && playerSelection === "rock"
-                || computerturn === "rock" && playerSelection === "paper"  
-                || computerturn === "paper" && playerSelection === "scissors") {
-                document.write("You Win")
-                return loss++
+            else {
+                return "Its a Tie";
             }
-            else document.write("Its a Tie")
 
             
             
 
         }
-        document.write (win)
         
-        const computerSelection = getcomputerchoice();
-       
-        console.log(playround (playerSelection, computerSelection));
+        let playerChoice = window.prompt().toLowerCase();
+        let computerChoice = getComputerChoice();
+
+        let result = playRound(playerChoice, computerChoice);
+        document.write(result);
     </script>
     
 </body>
